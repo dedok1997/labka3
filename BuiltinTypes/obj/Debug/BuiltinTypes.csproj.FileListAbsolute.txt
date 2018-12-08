@@ -1,0 +1,11 @@
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la\BuiltinTypes\bin\Debug\BuiltinTypes.dll
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la\BuiltinTypes\bin\Debug\BuiltinTypes.pdb
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la\BuiltinTypes\obj\Debug\BuiltinTypes.csproj.CoreCompileInputs.cache
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la\BuiltinTypes\obj\Debug\BuiltinTypes.dll
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la\BuiltinTypes\obj\Debug\BuiltinTypes.pdb
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la - Copy\BuiltinTypes\bin\Debug\BuiltinTypes.dll
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la - Copy\BuiltinTypes\bin\Debug\BuiltinTypes.pdb
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la - Copy\BuiltinTypes\obj\Debug\BuiltinTypes.csprojAssemblyReference.cache
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la - Copy\BuiltinTypes\obj\Debug\BuiltinTypes.csproj.CoreCompileInputs.cache
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la - Copy\BuiltinTypes\obj\Debug\BuiltinTypes.dll
+C:\Users\Evgeny\Desktop\Copy of ILSpy\la - Copy\BuiltinTypes\obj\Debug\BuiltinTypes.pdb

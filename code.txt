@@ -1,0 +1,125 @@
+﻿
+
+
+type Pair[K, V] {
+	K k;
+	V v; 
+	P[K] makePfromK() 
+	{ 
+		z = P[K](this.k, this.k); 
+		return z;
+	}
+}
+type P[T] { 
+	T x;
+	T y;
+	P[T] Add(P[T] a) 
+	{
+		z = P[T](this.x + a.x, this.y + a.y);
+		return z;
+	}
+}
+
+
+
+
+class Point{
+	int x;
+	int y;
+	Point Add(Point p){
+		newX = this.x+p.x;
+		p = Point(newX, this.y+p.y);
+		return p;
+	}
+}
+class Node{
+	Node next;
+	Node prev;
+	object value;
+}
+func void dump(Point p){
+	dump(p.x);
+	dump(p.y);
+}
+
+ 
+/*
+func void gg(P[bool] q) {
+} 
+// t = P[bool](true, true); 
+// q: Pair[bool, bool] = 1; 
+// w: P[void] = 1; 
+*/
+
+a = P[int](1, 2).Add(P[int](2, 3));
+dump(a.x);
+dump(a.y);
+b = Pair[int, int](1, 2);
+dump(b.k);
+dump(b.v); 
+c = Pair[int, bool](1, true); 
+dump(b.k); dump(b.v); 
+d = Pair[int, Pair[int, bool]](1, Pair[int, bool](2, true));
+dump(d.k);
+dump(d.v.k);
+dump(d.v.v); 
+e = Pair[int, bool](1, true).makePfromK();
+dump(e.x);
+dump(e.y); 
+
+
+
+
+
+dump(Point(1, 2));
+dump(Point(1, 2).Add(Point(10, 20)));
+dump(Point(1::int, 2::int)::Point.Add(Point(10::int, 20::int)::Point)::Point)::void;
+p:int = 5::int+4::int::int+5::int::int;
+dump(p);
+dump();
+dump();
+dump(7+3);
+dump(7-3);
+dump(1==2);
+dump(1<2);
+dump(1==1);
+dump(1<1);
+dump(2==1);
+dump(2<1);
+while (true){break;}
+while (true){while(true){break;}break;}
+p = 10;
+dump();
+x = 5;
+while (x < 6) {
+	dump(1);
+	break;
+	dump(44);
+}
+while (0 < x) {
+	dump(x);
+    x = x - 1;
+    p = 6;
+    while (true) {
+		dump(true);
+		break;
+		dump(false);
+	}
+	if (x == 1) {
+		break;
+	}
+}
+dump(4 + 4);
+dump(x);
+if (true) {
+	dump(x);
+}
+i = 0;
+s = 0;
+while (i < 100000){
+	s = s + i*i;
+	i = i + 1;
+}
+dump(s);
+
+/**/

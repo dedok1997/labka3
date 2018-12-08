@@ -1,0 +1,89 @@
+*Program:
+	Declaration*
+	Statement*
+Declaration:
+	ClassDeclaration
+	FunctionDeclaration
+ClassDeclaration:
+	'class' Identifier ('['TypeParameters ']')? '{' ClassMember* '}'
+
+TypeParameters:
+	Type 
+	Type ',' TypeParameters
+
+Type:
+	 Identifier ('['TypeParameters ']')?
+ClassMember:
+	Field
+	Method
+Field:
+	Type Identifier ';'
+Method:
+	Type Identifier '(' Parameters? ')' Block
+FunctionDeclaration:
+	Type Identifier '(' Parameters? ')' Block
+Parameters:
+	Parameter (',' Parameter)*
+Statement:
+	ExpressionStatement
+	Assignment
+	If
+	While
+	Break
+	Return
+ExpressionStatement:
+	Expression ';'
+Assignment:
+	Identifier '=' Expression ';'
+If:
+	'if' '(' Expression ')' Block
+While:
+	'while' '(' Expression ')' Block
+Block:
+	'{' Statement* '}'
+Break:
+	'break' ';'
+Return:
+	'return' Expression? ';'
+ExpressionType:
+	'::' Type
+Expession:
+	Conditional
+Conditional:
+	LocicalOr "?" Expression ":" Expression ExpressionType?
+	LocicalOr
+LocicalOr:
+	LocicalOr "||" LogicalAnd ExpressionType?
+	LogicalAnd
+LogicalAnd:
+	LogicalAnd "&&" Equality ExpressionType?
+	Equality
+Equality:
+	Equality ("=="|"!=") Relational ExpressionType?
+	Relational
+Relational:
+	Relational ("<"|">"|"<="|">=") Additive ExpressionType?
+	Additive
+Additive:
+	Additive ("+"|"-") Multiplicative ExpressionType?
+	Multiplicative
+Multiplicative:
+	Multiplicative ("*"|"/"|"%") Unary ExpressionType?
+	Unary
+Unary:
+	("-"|"!") Unary ExpressionType?
+	Primary
+Primary:
+	Call
+	MemberAccess
+	Primitive
+Call:
+	Primary '(' Arguments? ')' ExpressionType?
+Arguments:
+	Expression (',' Expression)*
+MemberAccess:
+	Primary '.' Identifier ExpressionType?
+Primitive:
+	'(' Expression ')' ExpressionType?
+	Number ExpressionType?
+	Identifier ExpressionType?
