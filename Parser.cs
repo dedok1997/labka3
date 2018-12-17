@@ -93,28 +93,29 @@ namespace ExtraLab2018 {
 		}
 		IDeclaration TryParseDeclaration() {
 			if (CurrentIs("class")) {
-				return ParseClassDeclaration();
+				return ParseClassOrNeClass();
 			}
-            if (CurrentIs("type"))
-            {
-                return ParseTypeConstructorDeclaration();
-            }
             if (CurrentIs(FunctionDeclaration.Keyword)) {
 				return ParseFunctionDeclaration();
 			}
 			return null;
 		}
-		ClassDeclaration ParseClassDeclaration() {
-			Expect("class");
-			var name = ParseIdentifier();
+
+        ClassDeclaration ParseClassOrNeClass()
+        {
+            Expect("class");
+            var name = ParseIdentifier();
+            if (CurrentIs("[")) return ParseTypeConstructorDeclaration(name);
+            else return ParseClassDeclaration(name);
+        }
+
+        ClassDeclaration ParseClassDeclaration(string name) {
 			var members = ParseClassMembers();
 			return new ClassDeclaration(name, members);
 		}
 
-        TypeConstructorDeclaration ParseTypeConstructorDeclaration()
+        TypeConstructorDeclaration ParseTypeConstructorDeclaration(string name)
         {
-            Expect("type");
-            var name = ParseIdentifier();
             var typeParameters = parseTypeParameters();
             var members = ParseClassMembers();
             return new TypeConstructorDeclaration(name, members,typeParameters);

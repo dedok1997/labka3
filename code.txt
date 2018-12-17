@@ -1,41 +1,7 @@
-﻿/*
-type Pair[K, V] {
-	K k;
-	V v; 
-	P[K] makePfromK() 
-	{ 
-		z = P[K](this.k, this.k); 
-		return z;
-	}
-}
-type P[T] { 
-	T x;
-	T y;
-	P[T] Add(P[T] a) 
-	{
-		z = P[T](this.x + a.x, this.y + a.y);
-		return z;
-	}
-}
-*/
+﻿
 
-type Pair[K, V] {
-	K k;
-	V v;
-	P[K] makePfromK()
-	{ 
-		z = P[K](this.k, this.k); 
-		return z;
-	} 
-}
-type P[T] {
-	T x;
-	T y;
-	P[T] Add(P[T] a) { 
-		z = P[T](this.x + a.x, this.y + a.y); 
-		return z;
-	} 
-}
+class Pair[K, V] { K k; V v; P[K] makePfromK() { z=  P[K](this.k, this.k); return z; } }
+class P[T] { T x; T y; P[T] Add(P[T] a) { z = P[T](this.x + a.x, this.y + a.y); return z; } }
 
 
 
@@ -75,22 +41,11 @@ func void hh(){
 	t =  Pair[int, Pair[int, Pair[int, bool]]](1, Pair[int, Pair[int, bool]](2, Pair[int, bool](3, true)));
 } 
 
-a = P[int](1, 2).Add(P[int](2, 3));
-dump(a.x); 
-dump(a.y); 
-b = Pair[int, int](1, 2); 
-dump(b.k);
-dump(b.v); 
-c = Pair[int, bool](1, true);
-dump(b.k);
-dump(b.v); 
-d = Pair[int, Pair[int, bool]](1, Pair[int, bool](2, true));
-dump(d.k);
-dump(d.v.k);
-dump(d.v.v); 
-e = Pair[int, bool](1, true).makePfromK();
-dump(e.x);
-dump(e.y); 
+a = P[int](1, 2).Add(P[int](2, 3)); dump(a.x); dump(a.y); 
+b = Pair[int, int](1, 2); dump(b.k); dump(b.v); 
+c = Pair[int, bool](1, true); dump(b.k); dump(b.v); 
+d = Pair[int, Pair[int, bool]](1, Pair[int, bool](2, true)); dump(d.k); dump(d.v.k); dump(d.v.v); 
+e = Pair[int, bool](1, true).makePfromK(); dump(e.x); dump(e.y); 
 
 /*
 a = P[int](1, 2).Add(P[int](2, 3));
