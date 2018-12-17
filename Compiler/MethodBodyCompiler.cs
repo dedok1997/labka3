@@ -213,25 +213,7 @@ namespace ExtraLab2018.Compiler
             switch (expression.Function)
             {
                 case Identifier i when types.TryGetMyType(i.Name) != null || i is TypedIdentifier:
-                    //if (i is TypedIdentifier && types.TryGetMyType(i.Name) == null)
-                    //{
-                    //    var typed = i as TypedIdentifier;
-                    //    var type1 = new IType(typed.NonTypedName, typed.TypeParameters);
-                    //    try
-                    //    {
-                    //        compile(type1);
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-                    //        types.types.Remove(type1.TypedName);
-                    //        typed = ResolveTypeParameters(typed);
-                    //        i = typed;
-                    //        if (types.TryGetMyType(typed.Name) == null)
-                    //        {
-                    //            compile(new IType(typed.NonTypedName, typed.TypeParameters));
-                    //        }
-                    //    }
-                    //}
+                    
                     var t = types.TryGetMyType(i.Name);
                     var c = t.Resolve().Methods.FirstOrDefault(m1 => m1.Name == ".ctor");
                     if (c != null)
@@ -345,6 +327,7 @@ namespace ExtraLab2018.Compiler
         }
         TypeReference IExpressionVisitor<TypeReference>.VisitTypedExpression(TypedExpression expression)
         {
+            
             var expr = CompileExpression(expression.Expr);
             var type = types.GetMyType(expression.Type);
             if (expr.EqualTo(type))

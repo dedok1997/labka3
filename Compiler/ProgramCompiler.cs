@@ -23,7 +23,8 @@ namespace ExtraLab2018.Compiler {
 			AddTypes(programNode);
             var r = AddTypeCons(programNode);
             AddTypeMembers(programNode,r);
-			AddFunctions(programNode);
+            CompileClassConstructors(programNode, r);
+            AddFunctions(programNode);
 			CompileFunctions(programNode);
 			CompileClassMethods(programNode,r);
 			CompileMainMethod(programNode);
@@ -187,13 +188,22 @@ namespace ExtraLab2018.Compiler {
         void CompileClassMethods(ClassDeclaration classNode)
         {
             var td = types.GetMyType(classNode.Name).Resolve();
-            CompileClassConstructor(td);
+        //    CompileClassConstructor(td);
             foreach (var classMethod in classNode.Members.OfType<ClassMethod>())
             {
                 CompileClassMethod(classMethod);
             }
         }
 
+
+        void CompileClassConstructors(ProgramNode programNode, List<ClassDeclaration> typeCons)
+        {
+            foreach (var classNode in programNode.Declarations.OfType<ClassDeclaration>().Concat(typeCons))
+            {
+                if (classNode is TypeConstructorDeclaration) continue;
+                CompileClassConstructor(types.GetMyType(classNode.Name).Resolve());
+            }
+        }
 
      
 
