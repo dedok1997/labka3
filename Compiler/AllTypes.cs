@@ -125,6 +125,9 @@ namespace ExtraLab2018.Compiler {
                                         //    compile.Invoke(a.Type);
                                         //}
                                         return new Assignment(a.Target, a.Type?.Resolve(dict), expressionResolve(a.Expr));
+                                    case Return r:
+                                        return new Return(expressionResolve(r.Expr));
+
                                     default: return st;
                                 }
                             });

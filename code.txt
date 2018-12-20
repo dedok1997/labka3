@@ -1,7 +1,7 @@
 ﻿
 
-class Pair[K, V] { K k; V v; P[K] makePfromK() { z=  P[K](this.k, this.k); return z; } }
-class P[T] { T x; T y; P[T] Add(P[T] a) { z = P[T](this.x + a.x, this.y + a.y); return z; } }
+class Pair[K, V] { K k; V v; P[K] makePfromK() { return  P[K](this.k, this.k); } }
+class P[T] { T x; T y; P[T] Add(P[T] a) { return P[T](this.x + a.x, this.y + a.y); } }
 
 
 
