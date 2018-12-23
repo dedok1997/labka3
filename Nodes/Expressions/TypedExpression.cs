@@ -1,8 +1,8 @@
 ﻿namespace ExtraLab2018.Nodes.Expressions {
 	sealed class TypedExpression : IExpression {
 		public readonly IExpression Expr;
-		public string Type { get; }
-		public TypedExpression(IExpression expr, string type) {
+		public IType Type { get; }
+		public TypedExpression(IExpression expr, IType type) {
 			Expr = expr;
 			Type = type;
 		}

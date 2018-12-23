@@ -212,10 +212,12 @@ namespace ExtraLab2018.Compiler
         {
             switch (expression.Function)
             {
-                case Identifier i when types.TryGetMyType(i.Name) != null || i is TypedIdentifier:
+                case Identifier i when types.TryGetMyType(i.Name) != null:
                     
                     var t = types.TryGetMyType(i.Name);
-                    var c = t.Resolve().Methods.FirstOrDefault(m1 => m1.Name == ".ctor");
+                    var c = t.Resolve().Methods.FirstOrDefault(m1 => {
+                        
+                        return m1.Name == ".ctor"; });
                     if (c != null)
                     {
                         var e = expression.Arguments.Select(CompileExpression).ToList();
@@ -329,7 +331,7 @@ namespace ExtraLab2018.Compiler
         {
             
             var expr = CompileExpression(expression.Expr);
-            var type = types.GetMyType(expression.Type);
+            var type = types.GetMyType(expression.Type.TypedName);
             if (expr.EqualTo(type))
                 return type;
             else

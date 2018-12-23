@@ -117,6 +117,8 @@ namespace ExtraLab2018 {
         TypeConstructorDeclaration ParseTypeConstructorDeclaration(string name)
         {
             var typeParameters = parseTypeParameters();
+            if (typeParameters.Count == 0)
+                throw new Exception("Type constructor must have at least one type parametr");
             var members = ParseClassMembers();
             return new TypeConstructorDeclaration(name, members,typeParameters);
         }
@@ -240,7 +242,11 @@ namespace ExtraLab2018 {
             if (CurrentIs("["))
             {
                 var pars = parseTypeParameters();
-                typeCons.Add(new IType(name, pars));
+                if (pars.Count > 0)
+                {
+                    typeCons.Add(new IType(name, pars));
+                }
+                else throw new Exception("Type constructor must have at least one type parametr");
                 return typeCons.Last();
             }
             return new IType(name, new IType[0]);
@@ -262,7 +268,8 @@ namespace ExtraLab2018 {
 		}
 		IExpression ParseExpressionType(IExpression expression) {
 			if (SkipIf("::")) {
-				return new TypedExpression(expression, ParseIdentifier());
+                
+				return new TypedExpression(expression, ParseType());
 			}
 			return expression;
 		}

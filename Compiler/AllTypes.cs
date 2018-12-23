@@ -113,24 +113,25 @@ namespace ExtraLab2018.Compiler {
                                 return exps;
                             }
 
-                            var newBody = m.Body.Statements.Select(st =>
+                            IStatement statementResolve(IStatement st)
                             {
-                                
                                 switch (st)
                                 {
                                     case Assignment a:
-                                        
-                                        //if (a.Type != null && a.Type.TypeParameters.Count > 0 && !types.ContainsKey(a.Type.TypedName))
-                                        //{
-                                        //    compile.Invoke(a.Type);
-                                        //}
+
                                         return new Assignment(a.Target, a.Type?.Resolve(dict), expressionResolve(a.Expr));
                                     case Return r:
                                         return new Return(expressionResolve(r.Expr));
+                                    case IfStatement s:
+                                        return new IfStatement(expressionResolve(s.Condition), new Block(s.Body.Statements.Select(statementResolve).ToList()));
+                                    case ExpressionStatement s:
+                                        return new ExpressionStatement(expressionResolve(s.Expr));
 
                                     default: return st;
                                 }
-                            });
+                            }
+
+                            var newBody = m.Body.Statements.Select(statementResolve);
                             return new ClassMethod(newRetType, m.Name, pars, new Block(newBody.ToList().AsReadOnly()));
                     }
                     throw new Exception("wtf");
